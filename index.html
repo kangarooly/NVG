@@ -3,604 +3,215 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NovaGroup — Bức Tranh Tổng Thể Hệ Sinh Thái Quản Trị Khách Hàng</title>
+<title>NOVA GROUP — Sơ đồ Vòng đời Nghiệp vụ × Vòng đời Khách hàng</title>
 <style>
 :root{
   --navy:#0A2A5E; --navy-deep:#071D42; --navy-mid:#123a7a;
   --green:#7BB63E; --green-dark:#5B9130; --green-light:#EAF5DC;
-  --amber:#E8A33D; --amber-dark:#a06712; --red:#D64545; --red-dark:#9B3232;
+  --amber:#E8A33D; --amber-dark:#a06712; --red:#D64545;
   --purple:#6D5BA8; --purple-light:#EDE9F7;
+  --teal:#0E7490; --teal-light:#E0F7FA;
+  --slate:#334155; --slate-light:#EEF2F7;
   --bg:#F3F6FA; --paper:#FFFFFF; --ink:#1A2233; --ink-soft:#5B6B85; --line:#DCE5F0;
 }
 *{box-sizing:border-box; margin:0; padding:0;}
 body{font-family:'Tahoma','Segoe UI',sans-serif; background:var(--bg); color:var(--ink); line-height:1.5;}
 img,svg{display:block; max-width:100%;}
+::-webkit-scrollbar{height:10px; width:8px;}
+::-webkit-scrollbar-thumb{background:#C7D3E8; border-radius:8px;}
 
-/* ===== HEADER/FOOTER — LOGO ONLY ===== */
-.topbar{background:var(--navy-deep); padding:14px 40px; display:flex; align-items:center; justify-content:space-between; border-bottom:3px solid var(--green); position:sticky; top:0; z-index:200;}
-.masternav{display:flex; gap:8px; flex-wrap:wrap; justify-content:center;}
-.masternav a{font-family:Tahoma; font-size:11.5px; font-weight:bold; color:#C7D3E8; text-decoration:none; padding:7px 13px; border-radius:20px; border:1px solid rgba(255,255,255,0.15); transition:all 0.15s; white-space:nowrap;}
-.masternav a:hover, .masternav a.active{background:var(--green); color:var(--navy-deep); border-color:var(--green);}
-.footer{background:var(--navy-deep); padding:22px 40px; display:flex; align-items:center; justify-content:center;}
+.topbar{background:var(--navy-deep); padding:18px 40px; text-align:center; border-bottom:3px solid var(--green); position:sticky; top:0; z-index:300;}
+.topbar .brand-text{font-family:Tahoma; font-weight:bold; font-size:20px; letter-spacing:2px; color:white;}
+.topbar .brand-text span{color:#B9E67A;}
 
-.hero{background:linear-gradient(135deg, var(--navy-deep), var(--navy)); color:white; text-align:center; padding:52px 30px 60px;}
-.hero h1{font-size:29px; font-weight:bold; max-width:860px; margin:0 auto 14px; line-height:1.4;}
+.hero{background:linear-gradient(135deg, var(--navy-deep), var(--navy)); color:white; text-align:center; padding:38px 30px 44px;}
+.hero h1{font-size:22px; font-weight:bold; max-width:920px; margin:0 auto 12px; line-height:1.45;}
 .hero h1 .hl{color:#B9E67A;}
-.hero p{font-size:14px; color:#C7D3E8; max-width:680px; margin:0 auto;}
-.hero-pills{display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top:22px;}
-.hpill{font-size:11.5px; font-weight:bold; background:rgba(123,182,62,0.15); border:1px solid rgba(123,182,62,0.5); color:#C6E8A0; padding:6px 14px; border-radius:20px;}
+.hero p{font-size:12.5px; color:#C7D3E8; max-width:820px; margin:0 auto;}
 
-.section{max-width:1240px; margin:0 auto; padding:52px 30px;}
-.section.alt{background:var(--paper); border-radius:24px; max-width:1280px;}
-.section-title{text-align:center; margin-bottom:8px;}
-.section-title .eyebrow{display:inline-block; font-size:12px; font-weight:bold; letter-spacing:1px; color:var(--green-dark); background:var(--green-light); padding:5px 14px; border-radius:20px; margin-bottom:12px;}
-.section-title h2{font-size:24px; color:var(--navy-deep); font-weight:bold;}
-.section-title p{font-size:13.5px; color:var(--ink-soft); max-width:700px; margin:10px auto 0;}
+.section{max-width:1900px; margin:0 auto; padding:34px 24px 46px;}
+.section-title{text-align:center; margin-bottom:6px;}
+.section-title .eyebrow{display:inline-block; font-size:11px; font-weight:bold; letter-spacing:1px; color:var(--green-dark); background:var(--green-light); padding:5px 14px; border-radius:20px; margin-bottom:10px;}
+.section-title h2{font-size:18.5px; color:var(--navy-deep); font-weight:bold;}
+.section-title p{font-size:11.5px; color:var(--ink-soft); max-width:900px; margin:8px auto 0;}
 
-.divider-band{background:var(--green); text-align:center; padding:10px; color:var(--navy-deep); font-weight:bold; font-size:13px; letter-spacing:0.5px;}
-
-.flow-wrap{background:var(--paper); border-radius:20px; padding:26px 20px; border:1px solid var(--line); box-shadow:0 4px 20px rgba(10,42,94,0.06); overflow-x:auto;}
-
-/* ===== LEGEND ===== */
-.legend{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:20px 0 6px; font-size:11.5px;}
-.legend .li{display:flex; align-items:center; gap:6px; font-weight:bold; color:var(--ink-soft);}
-.legend .sw{width:14px; height:14px; border-radius:4px; display:inline-block;}
-
-  
-/* ===== LIFECYCLE STEPS ===== */
-.story-wrap{margin-top:30px;}
-.story-step{display:grid; grid-template-columns:64px 1fr; gap:20px;}
-.story-num-col{display:flex; flex-direction:column; align-items:center;}
-.story-num{width:48px; height:48px; border-radius:50%; background:var(--navy); color:white; font-size:18px; font-weight:bold; display:flex; align-items:center; justify-content:center; flex-shrink:0; border:4px solid var(--green-light); position:relative; z-index:2;}
-.story-num.cdp{background:var(--purple);}
-.story-num.ai{background:var(--green-dark);}
-.story-num.bi{background:var(--amber-dark);}
-.story-line{width:3px; flex:1; background:var(--line); margin:2px 0;}
-.story-body{background:var(--paper); border:1.5px solid var(--line); border-radius:14px; padding:18px 22px; margin-bottom:22px;}
-.story-body .dept-tag{display:inline-block; font-size:10.5px; font-weight:bold; padding:3px 10px; border-radius:6px; margin-bottom:8px;}
-.dp-cmp{background:#FDF0DD; color:var(--amber-dark);}
-.dp-cdp{background:var(--purple-light); color:var(--purple);}
-.dp-cc{background:#DDEBF7; color:var(--navy);}
-.dp-csm{background:#FBE0EC; color:#a03d6a;}
-.dp-dmp{background:var(--green-light); color:var(--green-dark);}
-.dp-bu{background:#E7EAF0; color:#4A5A72;}
-.story-body h4{font-size:15px; color:var(--navy-deep); font-weight:bold; margin-bottom:6px;}
-.story-body p{font-size:13px; color:var(--ink-soft); line-height:1.6;}
-.tagrow{margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;}
-.tagchip{font-size:10.5px; font-weight:bold; padding:4px 10px; border-radius:20px; background:var(--green-light); color:var(--green-dark); border:1px solid #C9E6A5;}
-.story-example{margin-top:10px; background:var(--bg); border-left:4px solid var(--green); padding:9px 13px; font-size:12px; font-style:italic; color:var(--navy-deep); border-radius:0 8px 8px 0;}
-
-/* ===== PAIN POINTS (scope hien tai) ===== */
-.pain-grid{display:grid; grid-template-columns:1fr; gap:18px; margin-top:30px;}
-.pain-card{background:var(--paper); border:2px solid var(--line); border-radius:16px; padding:22px 24px; display:grid; grid-template-columns:44px 1fr; gap:16px;}
-.pain-card .pnum{width:44px; height:44px; border-radius:12px; background:var(--red); color:white; font-weight:bold; font-size:18px; display:flex; align-items:center; justify-content:center; flex-shrink:0;}
-.pain-card h4{font-size:15.5px; color:var(--navy-deep); font-weight:bold; margin-bottom:8px;}
-.pain-split{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px;}
-.pain-now, .pain-fix{border-radius:10px; padding:12px 15px; font-size:12.5px; line-height:1.6;}
-.pain-now{background:#FDF2F2; border:1px dashed #E8B4B4; color:var(--red-dark);}
-.pain-fix{background:var(--green-light); border:1px dashed #B9DD8A; color:var(--green-dark);}
-.pain-now .plabel, .pain-fix .plabel{font-weight:bold; font-size:11px; display:block; margin-bottom:5px;}
-
-.scope-banner{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin:30px 0 6px;}
-.scope-item{border-radius:14px; padding:18px 24px; text-align:center; flex:1; min-width:240px; max-width:340px;}
-.scope-item.now{background:var(--navy-deep); color:white; border:2px solid var(--green);}
-.scope-item.later{background:var(--paper); color:var(--ink-soft); border:2px dashed var(--line);}
-.scope-item h5{font-size:13.5px; font-weight:bold; margin-bottom:8px;}
-.scope-item.now h5{color:#B9E67A;}
-.scope-item p{font-size:11.5px; line-height:1.6;}
-
-/* ===== BI SUGGEST DEMO ===== */
-.bi-demo{background:var(--paper); border:1.5px solid var(--line); border-radius:16px; padding:24px; margin-top:20px;}
-.bi-input{display:flex; gap:14px; align-items:center; background:var(--bg); border-radius:12px; padding:14px 18px; margin-bottom:18px;}
-.bi-input .biicon{width:38px; height:38px; border-radius:10px; background:var(--navy); color:white; display:flex; align-items:center; justify-content:center; font-size:16px; flex-shrink:0;}
-.bi-input .bitext{font-size:12.5px; color:var(--ink-soft);}
-.bi-input .bitext b{color:var(--navy-deep);}
-.bi-arrow-down{text-align:center; color:var(--green-dark); font-size:22px; margin:8px 0;}
-.bi-result-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:12px;}
-.bi-result{border-radius:12px; padding:14px 16px; border:2px solid var(--line); text-align:center;}
-.bi-result.top{border-color:var(--green); background:var(--green-light);}
-.bi-result .bu-code{font-family:'Courier New',monospace; font-weight:bold; font-size:15px; color:var(--navy-deep);}
-.bi-result .bu-name{font-size:11px; color:var(--ink-soft); margin:4px 0;}
-.bi-result .bu-score{font-size:11px; font-weight:bold;}
-.bi-result.top .bu-score{color:var(--green-dark);}
-
-/* ===== BEFORE/AFTER (reuse) ===== */
-.ba-wrap{display:grid; grid-template-columns:1fr 90px 1fr; align-items:center; gap:0; margin-top:36px;}
-.ba-arrow{display:flex; flex-direction:column; align-items:center; gap:6px;}
-.ba-arrow svg{width:56px; height:56px;}
-.ba-arrow span{font-size:11px; font-weight:bold; color:var(--green-dark); text-align:center;}
-.silo-card{background:var(--paper); border:2px solid var(--line); border-radius:16px; padding:24px;}
-.silo-title{font-weight:bold; font-size:14px; color:var(--red); margin-bottom:16px; text-align:center;}
-.silo-title.good{color:#B9E67A;}
-.silo-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px;}
-.silo-box{background:#FDF2F2; border:1.5px dashed #E8B4B4; border-radius:10px; padding:13px 8px; text-align:center; font-size:12px; font-weight:bold; color:#9B3232;}
-.silo-box .n{display:block; font-size:19px; margin-bottom:4px;}
-.silo-caption{text-align:center; font-size:11.5px; color:var(--ink-soft); margin-top:14px;}
-.unified-box{background:linear-gradient(135deg, var(--navy), var(--navy-mid)); border-radius:16px; padding:26px 18px; text-align:center; color:white;}
-.hotline-num{font-size:21px; font-weight:bold; color:#B9E67A; margin-bottom:6px;}
-.hotline-lbl{font-size:11.5px; color:#C7D3E8; margin-bottom:18px;}
-.unified-grid{display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px;}
-.unified-item{background:rgba(255,255,255,0.08); border:1px solid rgba(123,182,62,0.4); border-radius:9px; padding:9px 6px; font-size:11px; font-weight:bold;}
-
-@media (max-width:900px){
-  .ba-wrap{grid-template-columns:1fr; gap:18px;}
-  .ba-arrow{transform:rotate(90deg); margin:4px 0;}
-  .story-step{grid-template-columns:48px 1fr; gap:12px;}
-  .pain-card{grid-template-columns:1fr;}
-  .pain-split{grid-template-columns:1fr;}
-  .bi-result-grid{grid-template-columns:1fr;}
+.data-source-note{
+  background:var(--teal-light); border:1.5px dashed var(--teal); border-radius:12px;
+  padding:12px 18px; font-size:11px; color:#0a4a5c; line-height:1.6; margin-top:16px; text-align:center;
 }
+.data-source-note b{color:var(--teal);}
+
+.legend-row{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:16px; font-size:10.5px;}
+.legend-item{display:flex; align-items:center; gap:6px; font-weight:bold; color:var(--ink-soft); max-width:300px;}
+.legend-sw{width:13px; height:13px; border-radius:4px; flex-shrink:0;}
+
+.flowchart-outer{overflow-x:auto; margin-top:20px; padding-bottom:10px;}
+.flowchart{
+  display:grid; grid-template-columns: repeat(6, 320px); gap:0; min-width:1920px;
+  border:2px solid var(--navy); border-radius:16px; overflow:hidden;
+}
+.fc-col{display:flex; flex-direction:column; border-right:2px solid var(--navy);}
+.fc-col:last-child{border-right:none;}
+
+.fc-gd-header{background:var(--navy); color:white; text-align:center; padding:12px 10px; min-height:78px; display:flex; flex-direction:column; justify-content:center;}
+.fc-gd-header .gd-code{font-size:12px; font-weight:bold; color:#B9E67A; letter-spacing:0.5px;}
+.fc-gd-header .gd-name{font-size:11.5px; font-weight:bold; margin-top:4px; line-height:1.4;}
+.fc-gd-header .gd-timeline{font-size:9.5px; color:#C7D3E8; margin-top:4px; font-style:italic;}
+
+.fc-cj-row{background:var(--purple); color:white; padding:9px 12px; text-align:center; border-bottom:1px solid var(--navy); min-height:50px; display:flex; align-items:center; justify-content:center;}
+.fc-cj-row .cj-label{font-size:10px; font-weight:bold; line-height:1.5;}
+.fc-cj-note{background:var(--purple-light); color:#4c2f8f; padding:11px 13px; font-size:10px; line-height:1.55; border-bottom:2px solid var(--navy); min-height:150px; display:flex; align-items:center;}
+
+/* NEW ROW: Touchpoints / Channels */
+.fc-tp-label{background:var(--teal); color:white; font-size:10px; font-weight:bold; text-align:center; padding:7px; letter-spacing:0.4px;}
+.fc-tp-list{padding:9px; display:flex; flex-direction:column; gap:6px; background:var(--teal-light); min-height:540px;}
+.fc-tp-item{background:var(--paper); border:1px solid #A8D8E0; border-radius:8px; padding:8px 10px; border-left:3px solid var(--teal); min-height:96px; display:flex; flex-direction:column; justify-content:center;}
+.fc-tp-item .tp-brand{font-size:10px; font-weight:bold; color:var(--teal); margin-bottom:3px;}
+.fc-tp-item .tp-doituong{font-size:9px; font-weight:bold; color:var(--amber-dark); background:var(--amber-dark); color:white; display:inline-block; padding:2px 6px; border-radius:5px; margin-bottom:4px; width:fit-content;}
+.fc-tp-item .tp-kenh{font-size:9.5px; color:var(--ink-soft); line-height:1.45;}
+
+.fc-top-label{background:var(--navy-deep); color:#B9E67A; font-size:10px; font-weight:bold; text-align:center; padding:7px; letter-spacing:0.4px;}
+.fc-dept-list{padding:9px; display:flex; flex-direction:column; gap:7px; background:var(--paper); min-height:520px;}
+.fc-dept-card{border-radius:9px; padding:9px 10px; border-left:4px solid; min-height:118px; display:flex; flex-direction:column;}
+.fc-dept-card .dept-tags{display:flex; gap:5px; margin-bottom:4px;}
+.dtag{font-size:8.5px; font-weight:bold; padding:2px 6px; border-radius:5px; color:white;}
+.fc-dept-card .dept-cd{font-size:10px; font-weight:bold; margin-bottom:3px;}
+.fc-dept-card .dept-viec{font-size:9.5px; color:var(--ink-soft); line-height:1.45; margin-bottom:4px; flex:1;}
+.fc-dept-card .dept-sop{font-size:9px; font-family:'Courier New',monospace; font-weight:bold; background:rgba(0,0,0,0.04); padding:2px 6px; border-radius:5px; display:inline-block;}
+
+.fc-bottom-label{background:var(--green-dark); color:white; font-size:10px; font-weight:bold; text-align:center; padding:7px; letter-spacing:0.4px;}
+.fc-kpi-list{padding:9px; display:flex; flex-direction:column; gap:6px; background:var(--bg); min-height:460px;}
+.fc-kpi-item{background:var(--paper); border:1px solid var(--line); border-radius:8px; padding:8px 10px; border-left:3px solid var(--green); min-height:80px; display:flex; flex-direction:column; justify-content:center;}
+.fc-kpi-item .kpi-phong{font-size:8.5px; font-weight:bold; padding:2px 6px; border-radius:5px; color:white; display:inline-block; margin-bottom:4px; width:fit-content;}
+.fc-kpi-item .kpi-metric{font-size:9.5px; color:var(--ink); font-weight:bold; line-height:1.4;}
+.fc-kpi-item .kpi-target{font-size:9px; color:var(--green-dark); font-weight:bold; margin-top:3px;}
+
+/* NEW ROW: Tools / Platform */
+.fc-tool-label{background:var(--slate); color:white; font-size:10px; font-weight:bold; text-align:center; padding:7px; letter-spacing:0.4px;}
+.fc-tool-list{padding:10px; display:flex; flex-direction:column; gap:6px; background:var(--slate-light); min-height:230px;}
+.fc-tool-item{background:var(--paper); border:1px solid #C4CEDA; border-radius:7px; padding:7px 10px; font-size:9.5px; font-weight:bold; color:var(--slate); display:flex; align-items:center; gap:6px;}
+.fc-tool-item::before{content:'⚙'; color:var(--teal); font-size:11px;}
+
+.loop-note{text-align:center; margin-top:20px; padding:15px 22px; background:var(--paper); border:2px dashed var(--green); border-radius:14px; font-size:11.5px; color:var(--navy-deep); font-weight:bold;}
 </style>
 </head>
 <body>
 
-<!-- ============ STICKY HEADER — LOGO ONLY ============ -->
-<div class="topbar">
-  <svg width="130" height="34" viewBox="0 0 220 58">
-    <rect x="2" y="6" width="46" height="46" rx="9" fill="#7BB63E"/>
-    <rect x="16" y="20" width="18" height="18" rx="4" fill="#0A2A5E" transform="rotate(45 25 29)"/>
-    <text x="60" y="38" font-family="Arial" font-weight="bold" font-size="26" fill="#B9E67A">Nova</text>
-    <text x="132" y="38" font-family="Arial" font-weight="bold" font-size="26" fill="#FFFFFF">Group</text>
-  </svg>
-  <div class="masternav">
-    <a href="#kientruc" class="active" onclick="setActiveNav(this)">Kiến trúc tổng thể</a>
-    <a href="#vongdoi" onclick="setActiveNav(this)">Vòng đời khách hàng</a>
-    <a href="#diemnghen" onclick="setActiveNav(this)">5 điểm nghẽn cần giải quyết</a>
-    <a href="#bi" onclick="setActiveNav(this)">BI gợi ý phân bổ BU</a>
-  </div>
-  <div style="width:130px;"></div>
-</div>
+<div class="topbar"><span class="brand-text">NOVA <span>GROUP</span></span></div>
 
-<!-- ============ HERO ============ -->
 <div class="hero">
-  <h1>Bức tranh tổng thể: <span class="hl">Nền tảng quản trị vòng đời khách hàng tập trung</span><br>cho toàn hệ sinh thái NovaGroup</h1>
-  <p>Một Lead đổ về từ bất kỳ kênh nào, thuộc bất kỳ ngành nào (Bất động sản, Khách sạn, Vui chơi giải trí, F&B, Y tế, Giáo dục, Spa/Gym...) — đều được nhận diện, lưu hồ sơ, phân tích và phân bổ đúng đơn vị phụ trách một cách tự động, giảm phụ thuộc vào con người ở khâu xét duyệt trung gian.</p>
-  <div class="hero-pills">
-    <span class="hpill">CMP — Quản lý Chiến dịch</span>
-    <span class="hpill">CDP — Hồ sơ Khách hàng 360°</span>
-    <span class="hpill">Contact Center — Vào &amp; Ra</span>
-    <span class="hpill">CSM — Quản lý Case/Dịch vụ</span>
-    <span class="hpill">DMP/BI — Phân tích &amp; Gợi ý</span>
-  </div>
+  <h1>Sơ đồ Vòng đời Nghiệp vụ × Vòng đời Khách hàng<br><span class="hl">Hành trình Gia đình xuyên Hệ sinh thái NovaGroup</span></h1>
+  <p>Một lưu đồ duy nhất — đọc từ trái sang phải theo 6 giai đoạn Vòng đời Nghiệp vụ. Mỗi cột gồm 5 tầng: Điểm chạm/Kênh tiếp cận từng thành viên gia đình — Ai làm gì theo SOP nào — Chỉ số KPI đo lường — Nền tảng/Công cụ vận hành.</p>
 </div>
 
-<!-- ============ 1. KIEN TRUC TONG THE ============ -->
-<a id="kientruc"></a>
-<div class="section alt">
-  <div class="section-title">
-    <span class="eyebrow">BỨC TRANH TỔNG THỂ</span>
-    <h2>Kiến trúc vận hành — từ Lead đổ về đến khi có Dashboard cho Ban Lãnh đạo</h2>
-    <p>6 tầng xếp dọc, dữ liệu chảy một chiều từ trên xuống, có đường phản hồi (feedback loop) đưa dữ liệu ngược về hồ sơ khách hàng.</p>
-  </div>
-
-  <div class="legend">
-    <span class="li"><span class="sw" style="background:#E8A33D;"></span>CMP (Campaign)</span>
-    <span class="li"><span class="sw" style="background:#6D5BA8;"></span>CDP (Dữ liệu KH)</span>
-    <span class="li"><span class="sw" style="background:#0A2A5E;"></span>Contact Center</span>
-    <span class="li"><span class="sw" style="background:#a03d6a;"></span>CSM (Case/Dịch vụ)</span>
-    <span class="li"><span class="sw" style="background:#5B9130;"></span>DMP / BI</span>
-  </div>
-
-  <div class="flow-wrap">
-    <svg viewBox="0 0 1160 1750" xmlns="http://www.w3.org/2000/svg">
-      <defs>
-        <marker id="ah" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#7BB63E"/></marker>
-        <marker id="ahp" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto"><path d="M0,0 L0,8 L9,4 z" fill="#B9C7DC"/></marker>
-        <linearGradient id="navyGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#123a7a"/><stop offset="100%" stop-color="#0A2A5E"/></linearGradient>
-        <linearGradient id="purpleGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#8574c4"/><stop offset="100%" stop-color="#6D5BA8"/></linearGradient>
-        <linearGradient id="greenGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#7BB63E"/><stop offset="100%" stop-color="#5B9130"/></linearGradient>
-        <linearGradient id="pinkGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#c2568a"/><stop offset="100%" stop-color="#a03d6a"/></linearGradient>
-      </defs>
-
-      <!-- ===== TIER 0: NGUON LEAD DA KENH (Offline + Online, tat ca nganh) ===== -->
-      <text x="580" y="30" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="15" fill="#0A2A5E">⓪ NGUỒN LEAD ĐA KÊNH — MỌI NGÀNH TRONG HỆ SINH THÁI</text>
-
-      <!-- offline group -->
-      <rect x="20" y="46" width="330" height="90" rx="14" fill="#FFF7EC" stroke="#F0D4A0" stroke-width="1.6" stroke-dasharray="4,3"/>
-      <text x="185" y="64" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="11.5" fill="#a06712">OFFLINE</text>
-      <g font-family="Tahoma" font-size="10.5" fill="#0A2A5E" font-weight="bold">
-        <rect x="32" y="72" width="92" height="30" rx="8" fill="#FFF" stroke="#F0D4A0"/><text x="78" y="91" text-anchor="middle">Sự kiện / Showroom</text>
-        <rect x="130" y="72" width="92" height="30" rx="8" fill="#FFF" stroke="#F0D4A0"/><text x="176" y="91" text-anchor="middle">Booth / Sales Kiosk</text>
-        <rect x="228" y="72" width="106" height="30" rx="8" fill="#FFF" stroke="#F0D4A0"/><text x="281" y="91" text-anchor="middle">Tại điểm bán (POS)</text>
-      </g>
-      <text x="185" y="128" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#a06712">BĐS · Khách sạn · Công viên · F&amp;B · Y tế · Giáo dục · Spa/Gym</text>
-
-      <!-- online group -->
-      <rect x="365" y="46" width="775" height="90" rx="14" fill="#EAF5DC" stroke="#B9DD8A" stroke-width="1.6" stroke-dasharray="4,3"/>
-      <text x="752" y="64" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="11.5" fill="#5B9130">ONLINE</text>
-      <g font-family="Tahoma" font-size="10" fill="#0A2A5E" font-weight="bold">
-        <rect x="380" y="72" width="82" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="421" y="91" text-anchor="middle">Facebook/Google Ads</text>
-        <rect x="470" y="72" width="82" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="511" y="91" text-anchor="middle">Website / Landing</text>
-        <rect x="560" y="72" width="82" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="601" y="91" text-anchor="middle">Zalo OA / ZNS</text>
-        <rect x="650" y="72" width="82" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="691" y="91" text-anchor="middle">Hotline / IVR</text>
-        <rect x="740" y="72" width="82" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="781" y="91" text-anchor="middle">Messenger/Insta</text>
-        <rect x="830" y="72" width="82" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="871" y="91" text-anchor="middle">TikTok / Social</text>
-        <rect x="920" y="72" width="82" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="961" y="91" text-anchor="middle">Mobile App Nova</text>
-        <rect x="1010" y="72" width="115" height="30" rx="8" fill="#FFF" stroke="#B9DD8A"/><text x="1067" y="91" text-anchor="middle">Sàn TMĐT (Shopee..)</text>
-      </g>
-      <text x="752" y="128" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B9130">Tất cả BU thuộc Novaland · NovaService (14 BU) · Nova Agri</text>
-
-      <path d="M580,136 L580,164" stroke="#7BB63E" stroke-width="2.6" fill="none" marker-end="url(#ah)"/>
-
-      <!-- ===== TIER 1: CMP — Campaign Management ===== -->
-      <rect x="140" y="168" width="880" height="90" rx="18" fill="url(#navyGrad)" stroke="#E8A33D" stroke-width="3"/>
-      <text x="580" y="196" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="16" fill="white">① CMP — QUẢN LÝ CHIẾN DỊCH (CAMPAIGN MANAGEMENT PLATFORM)</text>
-      <g font-family="Tahoma" font-size="11.5" fill="white" font-weight="bold">
-        <text x="280" y="226" text-anchor="middle">📋 Tạo &amp; theo dõi Campaign</text>
-        <text x="580" y="226" text-anchor="middle">🎯 Target theo Persona / BU</text>
-        <text x="880" y="226" text-anchor="middle">💰 Ngân sách &amp; hiệu quả theo kênh</text>
-      </g>
-      <rect x="380" y="234" width="400" height="20" rx="10" fill="rgba(232,163,61,0.25)" stroke="#E8A33D" stroke-width="1"/>
-      <text x="580" y="248" text-anchor="middle" font-family="Tahoma" font-size="10.5" fill="#FFE3B0" font-weight="bold">Marketing của mọi BU đăng ký chiến dịch tại đây — không rời rạc từng BU</text>
-
-      <path d="M580,258 L580,286" stroke="#7BB63E" stroke-width="2.6" fill="none" marker-end="url(#ah)"/>
-
-      <!-- ===== TIER 2: CDP ===== -->
-      <rect x="140" y="290" width="880" height="130" rx="18" fill="#FFFFFF" stroke="#6D5BA8" stroke-width="3"/>
-      <rect x="140" y="290" width="880" height="42" rx="18" fill="#EDE9F7"/>
-      <rect x="140" y="314" width="880" height="18" fill="#EDE9F7"/>
-      <text x="580" y="317" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="16" fill="#6D5BA8">② CDP — NỀN TẢNG DỮ LIỆU KHÁCH HÀNG (CUSTOMER DATA PLATFORM)</text>
-      <g font-family="Tahoma" font-size="11.5" fill="#0A2A5E" font-weight="bold">
-        <text x="240" y="372" text-anchor="middle">🔗 Hợp nhất ID đa kênh</text>
-        <text x="470" y="372" text-anchor="middle">👤 Hồ sơ 360° duy nhất</text>
-        <text x="700" y="372" text-anchor="middle">🏷 Phân khúc tự động</text>
-        <text x="920" y="372" text-anchor="middle">🕒 Lịch sử toàn vòng đời</text>
-      </g>
-      <text x="580" y="402" text-anchor="middle" font-family="Tahoma" font-size="11" font-style="italic" fill="#5B6B85">Một khách hàng — dù chạm bao nhiêu kênh, thuộc BU nào — chỉ có DUY NHẤT một hồ sơ trong CDP</text>
-
-      <path d="M580,420 L580,448" stroke="#7BB63E" stroke-width="2.6" fill="none" marker-end="url(#ah)"/>
-
-      <!-- ===== TIER 3: CONTACT CENTER HUB (2 chieu) ===== -->
-      <rect x="80" y="452" width="1000" height="230" rx="18" fill="url(#navyGrad)"/>
-      <text x="580" y="482" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="17" fill="white">③ CONTACT CENTER DÙNG CHUNG — HUB TRUNG TÂM (SHARED SERVICE)</text>
-      <text x="580" y="502" text-anchor="middle" font-family="Tahoma" font-size="11" fill="#C6E8A0">☎ 1900 63 6666 — Một đầu số cho toàn Tập đoàn</text>
-
-      <!-- INBOUND box -->
-      <rect x="110" y="516" width="440" height="150" rx="14" fill="rgba(255,255,255,0.08)" stroke="#7BB63E" stroke-width="1.6"/>
-      <text x="330" y="540" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="13" fill="#B9E67A">⬇ INBOUND — Khách gọi vào</text>
-      <g font-family="Tahoma" font-size="10.5" fill="white">
-        <text x="330" y="562" text-anchor="middle">🤖 AI nghe hiểu nhu cầu (Voice AI/IVR)</text>
-        <text x="330" y="582" text-anchor="middle">✔ Xác thực &amp; nhận diện khách (nối CDP)</text>
-        <text x="330" y="602" text-anchor="middle">🔀 Tự động định tuyến đúng BU / phòng ban</text>
-        <text x="330" y="622" text-anchor="middle">📞 Nối máy đúng đội ngũ phụ trách</text>
-      </g>
-      <rect x="130" y="632" width="400" height="24" rx="12" fill="rgba(123,182,62,0.2)" stroke="#7BB63E"/>
-      <text x="330" y="648" text-anchor="middle" font-family="Tahoma" font-size="10" fill="#B9E67A" font-weight="bold">Chưa cần bấm phím — AI hỏi 1 câu, hiểu và nối đúng người</text>
-
-      <!-- OUTBOUND box -->
-      <rect x="610" y="516" width="440" height="150" rx="14" fill="rgba(255,255,255,0.08)" stroke="#E8A33D" stroke-width="1.6"/>
-      <text x="830" y="540" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="13" fill="#FFD98A">⬆ OUTBOUND — Gọi ra chăm sóc Lead</text>
-      <g font-family="Tahoma" font-size="10.5" fill="white">
-        <text x="830" y="562" text-anchor="middle">📥 Nhận Lead từ CMP + CDP</text>
-        <text x="830" y="582" text-anchor="middle">⚖ Tự động phân bổ đều cho BAM</text>
-        <text x="830" y="602" text-anchor="middle">📲 Click-to-Call / Auto Dial</text>
-        <text x="830" y="622" text-anchor="middle">💡 AI gợi ý kịch bản khi đang gọi</text>
-      </g>
-      <rect x="630" y="632" width="400" height="24" rx="12" fill="rgba(232,163,61,0.2)" stroke="#E8A33D"/>
-      <text x="830" y="648" text-anchor="middle" font-family="Tahoma" font-size="10" fill="#FFD98A" font-weight="bold">Giám sát SLA tiếp nhận — cảnh báo tự động nếu quá hạn</text>
-
-      <path d="M580,682 L580,708" stroke="#7BB63E" stroke-width="2.6" fill="none" marker-end="url(#ah)"/>
-
-      <!-- ===== TIER 4: CSM ===== -->
-      <rect x="140" y="712" width="880" height="120" rx="18" fill="#FFFFFF" stroke="#a03d6a" stroke-width="3"/>
-      <rect x="140" y="712" width="880" height="42" rx="18" fill="#FBE0EC"/>
-      <rect x="140" y="736" width="880" height="18" fill="#FBE0EC"/>
-      <text x="580" y="739" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="16" fill="#a03d6a">④ CSM — QUẢN LÝ CASE &amp; DỊCH VỤ (CASE / SERVICE MANAGEMENT)</text>
-      <g font-family="Tahoma" font-size="11.5" fill="#0A2A5E" font-weight="bold">
-        <text x="270" y="792" text-anchor="middle">🎫 Mở Case / Ticket tự động</text>
-        <text x="500" y="792" text-anchor="middle">⏱ Theo dõi SLA xử lý</text>
-        <text x="750" y="792" text-anchor="middle">✅ Đóng Case &amp; cập nhật CDP</text>
-      </g>
-      <text x="580" y="820" text-anchor="middle" font-family="Tahoma" font-size="10.5" font-style="italic" fill="#5B6B85">Khiếu nại / yêu cầu hỗ trợ đều có vòng đời rõ ràng: Mở → Xử lý → Chuyển cấp (nếu cần) → Đóng</text>
-
-      <path d="M580,832 L580,860" stroke="#7BB63E" stroke-width="2.6" fill="none" marker-end="url(#ah)"/>
-      <!-- feedback loop CSM -> CDP -->
-      <path d="M140,772 Q60,772 60,420 Q60,330 140,330" stroke="#B9C7DC" stroke-width="1.4" fill="none" stroke-dasharray="4,3" marker-end="url(#ahp)"/>
-      <text x="45" y="560" text-anchor="middle" font-family="Tahoma" font-size="9" fill="#5B6B85" transform="rotate(-90 45 560)">Cập nhật ngược hồ sơ khách hàng (CDP)</text>
-
-      <!-- ===== TIER 5: DMP / BI ===== -->
-      <rect x="140" y="864" width="880" height="150" rx="18" fill="url(#greenGrad)"/>
-      <text x="580" y="892" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="16" fill="white">⑤ DMP / BI — PHÂN TÍCH &amp; GỢI Ý PHÂN BỔ (DATA MANAGEMENT + BUSINESS INTELLIGENCE)</text>
-      <g font-family="Tahoma" font-size="11.5" fill="white" font-weight="bold">
-        <text x="270" y="924" text-anchor="middle">📊 Dashboard theo BU / TCT / Tập đoàn</text>
-        <text x="580" y="924" text-anchor="middle">🔍 Theo dõi từng Touch Point chiến dịch</text>
-        <text x="880" y="924" text-anchor="middle">🎯 Gợi ý BU tiềm năng cho từng Lead</text>
-      </g>
-      <rect x="300" y="936" width="560" height="24" rx="12" fill="rgba(255,255,255,0.15)" stroke="rgba(255,255,255,0.5)"/>
-      <text x="580" y="952" text-anchor="middle" font-family="Tahoma" font-size="10.5" fill="white" font-weight="bold">BI &amp; BA phân tích dữ liệu → Đề xuất luồng phân bổ đúng BU phụ trách</text>
-      <text x="580" y="985" text-anchor="middle" font-family="Tahoma" font-size="11" fill="rgba(255,255,255,0.85)">Xem ví dụ minh họa cụ thể ở phần "BI gợi ý phân bổ BU" bên dưới ▼</text>
-
-      <path d="M580,1014 L580,1042" stroke="#7BB63E" stroke-width="2.6" fill="none" marker-end="url(#ah)"/>
-
-      <!-- ===== TIER 6: 3 GROUPS OF BU (đich đến cuoi) ===== -->
-      <text x="580" y="1068" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="14" fill="#0A2A5E">⑥ PHÂN BỔ ĐẾN ĐÚNG ĐƠN VỊ KINH DOANH (BU) PHỤ TRÁCH</text>
-
-      <!-- Card 1: NOVALAND -->
-      <rect x="80" y="1090" width="290" height="190" rx="14" fill="#EAF5DC" stroke="#7BB63E" stroke-width="1.6"/>
-      <g transform="translate(180,1108)">
-        <rect x="0" y="0" width="26" height="26" rx="5" fill="#0A2A5E"/>
-        <rect x="7" y="7" width="12" height="12" rx="2.4" fill="#7BB63E" transform="rotate(45 13 13)"/>
-        <text x="34" y="19" font-family="Arial" font-weight="bold" font-size="16" fill="#0A2A5E">Nova<tspan fill="#5B9130">Land</tspan></text>
-      </g>
-      <text x="225" y="1162" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="12.5" fill="#0A2A5E">Bất động sản</text>
-      <text x="225" y="1182" text-anchor="middle" font-family="Tahoma" font-size="10" fill="#5B6B85">The Grand Manhattan</text>
-      <text x="225" y="1198" text-anchor="middle" font-family="Tahoma" font-size="10" fill="#5B6B85">NovaWorld · Aqua City...</text>
-      <text x="225" y="1220" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B9130" font-weight="bold">Lead mua/thuê BĐS</text>
-      <text x="225" y="1240" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B9130" font-weight="bold">→ BAM Sales dự án</text>
-
-      <!-- Card 2: NOVASERVICE 14 BU -->
-      <rect x="390" y="1090" width="380" height="190" rx="14" fill="#EAF5DC" stroke="#7BB63E" stroke-width="1.6"/>
-      <g transform="translate(500,1106)">
-        <rect x="0" y="0" width="24" height="24" rx="5" fill="#0A2A5E"/>
-        <rect x="6" y="6" width="11" height="11" rx="2.2" fill="#7BB63E" transform="rotate(45 11.5 11.5)"/>
-        <text x="32" y="18" font-family="Arial" font-weight="bold" font-size="14.5" fill="#0A2A5E">Nova<tspan fill="#5B9130">Service</tspan></text>
-      </g>
-      <text x="580" y="1146" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B6B85">Bán lẻ · Dịch vụ · Phát triển cộng đồng — 14 BU</text>
-      <g font-family="Tahoma" font-weight="bold" font-size="9.5" fill="#0A2A5E">
-        <rect x="404" y="1155" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="424" y="1168" text-anchor="middle">GLX</text>
-        <rect x="448" y="1155" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="468" y="1168" text-anchor="middle">NVD</text>
-        <rect x="492" y="1155" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="512" y="1168" text-anchor="middle">NHW</text>
-        <rect x="536" y="1155" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="556" y="1168" text-anchor="middle">CTG</text>
-        <rect x="580" y="1155" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="600" y="1168" text-anchor="middle">NGC</text>
-        <rect x="624" y="1155" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="644" y="1168" text-anchor="middle">NTR</text>
-        <rect x="668" y="1155" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="688" y="1168" text-anchor="middle">NBU</text>
-        <rect x="404" y="1178" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="424" y="1191" text-anchor="middle">NLE</text>
-        <rect x="448" y="1178" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="468" y="1191" text-anchor="middle">NME</text>
-        <rect x="492" y="1178" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="512" y="1191" text-anchor="middle">NMS</text>
-        <rect x="536" y="1178" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="556" y="1191" text-anchor="middle">NVE</text>
-        <rect x="580" y="1178" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="600" y="1191" text-anchor="middle">NWE</text>
-        <rect x="624" y="1178" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="644" y="1191" text-anchor="middle">NED</text>
-        <rect x="668" y="1178" width="40" height="19" rx="5" fill="#fff" stroke="#B9DD8A"/><text x="688" y="1191" text-anchor="middle">NAM</text>
-      </g>
-      <text x="580" y="1216" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B9130" font-weight="bold">Khách sạn · Vui chơi · F&amp;B · Y tế · Giáo dục · Spa/Gym</text>
-      <text x="580" y="1236" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B9130" font-weight="bold">→ Lễ tân / CSKH / Sales từng BU</text>
-      <text x="580" y="1256" text-anchor="middle" font-family="Tahoma" font-size="9" fill="#5B6B85">(xem chi tiết định hướng BI ở phần dưới)</text>
-
-      <!-- Card 3: NOVA AGRI -->
-      <rect x="790" y="1090" width="290" height="190" rx="14" fill="#EAF5DC" stroke="#7BB63E" stroke-width="1.6"/>
-      <g transform="translate(890,1106)">
-        <circle cx="14" cy="14" r="14" fill="#5B9130"/>
-        <path d="M14,6 C18,9 20,14 14,22 C8,14 10,9 14,6 Z" fill="#B9E67A"/>
-        <text x="32" y="19" font-family="Arial" font-weight="bold" font-size="15" fill="#0A2A5E">Nova<tspan fill="#5B9130">Agri</tspan></text>
-      </g>
-      <text x="935" y="1162" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="12.5" fill="#0A2A5E">Nông nghiệp</text>
-      <text x="935" y="1182" text-anchor="middle" font-family="Tahoma" font-size="10" fill="#5B6B85">Thành Nhơn · Anova...</text>
-      <text x="935" y="1198" text-anchor="middle" font-family="Tahoma" font-size="10" fill="#5B6B85">SaiGon Vet · Anova Feed</text>
-      <text x="935" y="1220" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B9130" font-weight="bold">Lead đại lý/nhà phân phối</text>
-      <text x="935" y="1240" text-anchor="middle" font-family="Tahoma" font-size="9.5" fill="#5B9130" font-weight="bold">→ CSKH ngành nông nghiệp</text>
-
-      <text x="580" y="1330" text-anchor="middle" font-family="Tahoma" font-weight="bold" font-size="14" fill="#0A2A5E">Một Lead — dù đến từ kênh nào, ngành nào — đều đi qua đúng 6 tầng này</text>
-      <text x="580" y="1352" text-anchor="middle" font-family="Tahoma" font-size="12" fill="#5B6B85">và luôn được lưu vết, đo lường tự động — không phụ thuộc vào việc một cá nhân có nhớ ghi chép hay không</text>
-    </svg>
-  </div>
-</div>
-
-<!-- ============ 2. TRUOC / SAU (Contact Center silo problem, reused concept but framed as ecosystem) ============ -->
 <div class="section">
   <div class="section-title">
-    <span class="eyebrow">VẤN ĐỀ HIỆN TẠI CẤP TẬP ĐOÀN</span>
-    <h2>Mỗi BU tự vận hành rời rạc → Không thấy được bức tranh toàn cảnh</h2>
-    <p>Không chỉ Contact Center — mà cả Marketing, CDP, và báo cáo cũng đang tách rời theo từng BU, khiến Tập đoàn không nhìn thấy khách hàng nào tiềm năng cho BU nào.</p>
+    <span class="eyebrow">MỘT HÀNH TRÌNH — MỘT BỨC TRANH TỔNG THỂ</span>
+    <h2 id="story-title">—</h2>
+    <p id="story-desc">—</p>
+    <div class="data-source-note" id="data-source-note"></div>
   </div>
-  <div class="ba-wrap">
-    <div class="silo-card">
-      <div class="silo-title">✕ HIỆN TẠI — TỪNG BU TỰ LÀM</div>
-      <div class="silo-grid">
-        <div class="silo-box"><span class="n">🏙️</span>Novaland tự có CRM riêng</div>
-        <div class="silo-box"><span class="n">🏨</span>Khách sạn tự đặt phòng riêng</div>
-        <div class="silo-box"><span class="n">🎡</span>Công viên tự bán vé riêng</div>
-        <div class="silo-box"><span class="n">🍽️</span>F&amp;B tự chăm khách riêng</div>
-        <div class="silo-box"><span class="n">🏥</span>Y tế tự quản lý riêng</div>
-        <div class="silo-box"><span class="n">💆</span>Spa/Gym tự vận hành riêng</div>
-      </div>
-      <div class="silo-caption">Lead từ Ads phải tổng hợp thủ công (manual) rồi mới phân cho BAM → tỷ lệ rớt khách cao ở nhiều khâu</div>
-    </div>
-    <div class="ba-arrow">
-      <svg viewBox="0 0 60 60"><path d="M8,30 L48,30 M36,18 L50,30 L36,42" stroke="#7BB63E" stroke-width="4" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span>HỢP NHẤT</span>
-    </div>
-    <div class="unified-box">
-      <div class="silo-title good">✓ ĐỀ XUẤT — NỀN TẢNG DÙNG CHUNG</div>
-      <div class="hotline-num">CDP + Contact Center</div>
-      <div class="hotline-lbl">Một hồ sơ khách hàng — Toàn Tập đoàn nhìn thấy</div>
-      <div class="unified-grid">
-        <div class="unified-item">🏙️ Novaland</div>
-        <div class="unified-item">🏨 Khách sạn</div>
-        <div class="unified-item">🎡 Công viên</div>
-        <div class="unified-item">🍽️ F&amp;B</div>
-        <div class="unified-item">🏥 Y tế</div>
-        <div class="unified-item">💆 Spa/Gym</div>
-      </div>
-    </div>
+
+  <div class="legend-row" id="legend-row"></div>
+
+  <div class="flowchart-outer">
+    <div class="flowchart" id="flowchart"></div>
   </div>
+
+  <div class="loop-note">↻ Sau Giai đoạn 6, dữ liệu hành trình gia đình quay lại Giai đoạn 1 ở chu kỳ tiếp theo cho các sản phẩm/dịch vụ khác trong hệ sinh thái — vòng lặp khép kín Nhận biết → Vận động → Nhận biết.</div>
 </div>
 
-<!-- ============ 3. VONG DOI KHACH HANG ============ -->
-<a id="vongdoi"></a>
-<div class="section alt">
-  <div class="section-title">
-    <span class="eyebrow">VÍ DỤ VẬN HÀNH THỰC TẾ</span>
-    <h2>Vòng đời một Lead — từ lúc đổ về đến khi thành khách hàng trung thành</h2>
-    <p>Minh họa xuyên suốt: một khách hàng để lại thông tin quan tâm The Grand Manhattan qua Facebook Ads, rồi được hệ thống dẫn dắt qua từng bước.</p>
-  </div>
-  <div class="story-wrap">
-    <div class="story-step">
-      <div class="story-num-col"><div class="story-num">1</div><div class="story-line"></div></div>
-      <div class="story-body">
-        <span class="dept-tag dp-cmp">CMP</span>
-        <h4>Marketing tạo Chiến dịch trên CMP</h4>
-        <p>Phòng Marketing GMA đăng ký chiến dịch "Mời khách quan tâm căn hộ Q1" trên nền tảng CMP dùng chung — không tạo campaign rời rạc ngoài hệ thống.</p>
-      </div>
-    </div>
-    <div class="story-step">
-      <div class="story-num-col"><div class="story-num cdp">2</div><div class="story-line"></div></div>
-      <div class="story-body">
-        <span class="dept-tag dp-cdp">CDP</span>
-        <h4>Lead đổ về — CDP nhận diện ngay lập tức</h4>
-        <p>Khách điền form trên Facebook Ads → CDP tự động kiểm tra: đây là khách MỚI hay đã có trong hồ sơ (ví dụ từng ghé Khách sạn Nova trước đây)? Nếu đã có, toàn bộ lịch sử được gắn vào ngay.</p>
-        <div class="story-example">Ví dụ: Hệ thống phát hiện số điện thoại này đã từng đặt phòng tại Nova Hotel &amp; Resort năm ngoái — đây là khách hàng thân thiết của hệ sinh thái, không phải người lạ.</div>
-      </div>
-    </div>
-    <div class="story-step">
-      <div class="story-num-col"><div class="story-num bi">3</div><div class="story-line"></div></div>
-      <div class="story-body">
-        <span class="dept-tag dp-dmp">DMP/BI</span>
-        <h4>Hệ thống tự động phân loại &amp; gợi ý phân bổ</h4>
-        <p>BI phân tích: Lead này quan tâm gì (BĐS), giá trị tiềm năng ra sao, và đề xuất phân bổ đúng cho BAM Sales GMA — không cần Quản lý trung gian duyệt tay từng bước.</p>
-      </div>
-    </div>
-    <div class="story-step">
-      <div class="story-num-col"><div class="story-num">4</div><div class="story-line"></div></div>
-      <div class="story-body">
-        <span class="dept-tag dp-cc">Contact Center — Outbound</span>
-        <h4>Hệ thống tự động phân cho BAM &amp; hỗ trợ gọi ra</h4>
-        <p>Lead được phân đều, tự động cho BAM bấm gọi (Click-to-Call). Trong lúc gọi, màn hình hiện đủ lịch sử khách hàng để tư vấn đúng trọng tâm.</p>
-      </div>
-    </div>
-    <div class="story-step">
-      <div class="story-num-col"><div class="story-num sales" style="background:#8a3f3f;">5</div><div class="story-line"></div></div>
-      <div class="story-body">
-        <span class="dept-tag dp-csm">CSM</span>
-        <h4>Nếu khách có yêu cầu/khiếu nại — mở Case theo dõi</h4>
-        <p>Ví dụ khách hỏi thêm về chính sách thanh toán — hệ thống tự mở 1 Case, theo dõi SLA phản hồi, đóng Case khi đã giải quyết xong, và cập nhật ngược vào hồ sơ CDP.</p>
-      </div>
-    </div>
-    <div class="story-step">
-      <div class="story-num-col"><div class="story-num" style="background:#5B9130;">6</div></div>
-      <div class="story-body">
-        <span class="dept-tag dp-dmp">DMP/BI</span>
-        <h4>Toàn bộ hành trình lên Dashboard cho Lãnh đạo</h4>
-        <p>Từ chiến dịch Facebook Ads ban đầu đến khi khách xem nhà mẫu, tất cả các Touch Point được ghi nhận — Ban Lãnh đạo thấy được chiến dịch nào, kênh nào, BU nào đang hiệu quả nhất.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ============ 4. 5 DIEM NGHEN CAN GIAI QUYET NGAY ============ -->
-<a id="diemnghen"></a>
-<div class="section">
-  <div class="section-title">
-    <span class="eyebrow">PHẠM VI GIAI ĐOẠN NÀY</span>
-    <h2>5 điểm nghẽn cần giải quyết trước — chưa cần AI/Automation nâng cao</h2>
-    <p>Đây là hiện trạng thực tế cần đóng lại trước, làm nền tảng vững chắc trước khi tiến lên các tính năng thông minh hơn.</p>
-  </div>
-
-  <div class="pain-grid">
-    <div class="pain-card">
-      <div class="pnum">1</div>
-      <div>
-        <h4>Nền tảng quản trị vòng đời khách hàng còn phân tán</h4>
-        <div class="pain-split">
-          <div class="pain-now"><span class="plabel">HIỆN TẠI</span>Mỗi BU tự quản lý khách hàng riêng, không có một hồ sơ tập trung xuyên suốt hệ sinh thái.</div>
-          <div class="pain-fix"><span class="plabel">CẦN CÓ</span>Một nền tảng CDP tập trung — mọi BU cùng nhìn vào một hồ sơ khách hàng duy nhất.</div>
-        </div>
-      </div>
-    </div>
-    <div class="pain-card">
-      <div class="pnum">2</div>
-      <div>
-        <h4>Quá phụ thuộc con người ở khâu xét duyệt trung gian</h4>
-        <div class="pain-split">
-          <div class="pain-now"><span class="plabel">HIỆN TẠI</span>Nhiều bước SOP phải qua xét duyệt của Quản lý trực tiếp (QLTT) và QLTT+1 — dễ đứt gãy khi vắng người duyệt.</div>
-          <div class="pain-fix"><span class="plabel">CẦN CÓ</span>Tự động hóa tracking &amp; đo lường tối đa, giảm phụ thuộc con người để đảm bảo kinh doanh liên tục.</div>
-        </div>
-      </div>
-    </div>
-    <div class="pain-card">
-      <div class="pnum">3</div>
-      <div>
-        <h4>Luồng Sales – Marketing rời rạc, rớt khách nhiều điểm</h4>
-        <div class="pain-split">
-          <div class="pain-now"><span class="plabel">HIỆN TẠI</span>Campaign → Tổng hợp Lead thủ công trên các nền tảng chạy Ads → Phân bổ cho BAM — nhiều bước thủ công gây rớt khách.</div>
-          <div class="pain-fix"><span class="plabel">CẦN CÓ</span>Nền tảng nối liền tự động Marketing–Sales, không phải chuyển tay giữa các bước.</div>
-        </div>
-      </div>
-    </div>
-    <div class="pain-card">
-      <div class="pnum">4</div>
-      <div>
-        <h4>Hệ thống báo cáo chưa xuyên suốt 3 cấp</h4>
-        <div class="pain-split">
-          <div class="pain-now"><span class="plabel">HIỆN TẠI</span>Báo cáo rời rạc theo từng nơi, khó tổng hợp lên cấp Tập đoàn.</div>
-          <div class="pain-fix"><span class="plabel">CẦN CÓ</span>Hệ thống báo cáo thống nhất 3 cấp: BU → Group (TCT) → Tập đoàn.</div>
-        </div>
-      </div>
-    </div>
-    <div class="pain-card">
-      <div class="pnum">5</div>
-      <div>
-        <h4>Sales Pipeline chưa linh hoạt theo đặc thù từng BU</h4>
-        <div class="pain-split">
-          <div class="pain-now"><span class="plabel">HIỆN TẠI</span>Pipeline cứng, khó tinh chỉnh cho phù hợp đặc thù kinh doanh riêng của từng BU (BĐS khác Khách sạn khác F&amp;B).</div>
-          <div class="pain-fix"><span class="plabel">CẦN CÓ</span>Sales Pipeline có thể thêm/bớt bước, thiết kế riêng theo từng BU mà vẫn nằm trong 1 nền tảng chung.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="scope-banner">
-    <div class="scope-item now">
-      <h5>✓ GIAI ĐOẠN NÀY — TẬP TRUNG GIẢI QUYẾT</h5>
-      <p>Chuẩn hóa dữ liệu · Nối liền Sales-Marketing · Contact Center dạng Add-on (tích hợp vendor hiện hữu, click-to-call, lưu lịch sử/ghi âm) · Zalo OA/ZNS tương tác 2 chiều có tracking · Báo cáo 3 cấp · Pipeline linh hoạt theo BU</p>
-    </div>
-    <div class="scope-item later">
-      <h5>◌ GIAI ĐOẠN SAU — KHI DỮ LIỆU ĐÃ CHUẨN HÓA</h5>
-      <p>AI Agentic gợi ý (Suggestion) · Dynamic Offer cá nhân hóa · Automation Workflow nâng cao · App riêng cho BAM tập trung tìm khách, ra số</p>
-    </div>
-  </div>
-</div>
-
-<!-- ============ 5. BI GOI Y PHAN BO BU ============ -->
-<a id="bi"></a>
-<div class="section alt">
-  <div class="section-title">
-    <span class="eyebrow">MINH HỌA CỤ THỂ</span>
-    <h2>BI/BA phân tích Lead và gợi ý phân bổ đúng BU tiềm năng</h2>
-    <p>Ví dụ: một Lead để lại thông tin qua Website — hệ thống phân tích hành vi và gợi ý ngay đơn vị kinh doanh (BU) phù hợp nhất để tiếp cận.</p>
-  </div>
-
-  <div class="bi-demo">
-    <div class="bi-input">
-      <div class="biicon">👤</div>
-      <div class="bitext">Lead: <b>Nguyễn Thị H.</b> — Nữ, 34 tuổi, TP.HCM · Hành vi: đã xem trang <b>Khách sạn Nova Hồ Tràm</b> (3 lần), từng đặt bàn tại <b>nhà hàng NovaGroup</b> tháng trước, có tương tác Zalo hỏi về gói <b>tập gym CitiGym</b>.</div>
-    </div>
-    <div class="bi-arrow-down">⬇ DMP/BI phân tích chân dung &amp; hành vi đa điểm chạm ⬇</div>
-    <div class="bi-result-grid">
-      <div class="bi-result top">
-        <div class="bu-code">NHW</div>
-        <div class="bu-name">Khách sạn / Resort</div>
-        <div class="bu-score">🟢 Điểm phù hợp: 92%</div>
-      </div>
-      <div class="bi-result">
-        <div class="bu-code">NGC</div>
-        <div class="bu-name">Gym / TDTT (CitiGym)</div>
-        <div class="bu-score" style="color:#a06712;">🟡 Điểm phù hợp: 68%</div>
-      </div>
-      <div class="bi-result">
-        <div class="bu-code">CTG</div>
-        <div class="bu-name">F&amp;B / Nhà hàng</div>
-        <div class="bu-score" style="color:#a06712;">🟡 Điểm phù hợp: 61%</div>
-      </div>
-    </div>
-    <div class="story-example" style="margin-top:16px;">Gợi ý của hệ thống: Ưu tiên phân Lead này cho BU <b>NHW (Khách sạn/Resort)</b> tiếp cận trước — vì tần suất và độ gần đây (recency) của hành vi cao nhất. Đồng thời gắn tag "Tiềm năng chéo" (cross-sell) cho NGC và CTG để 2 BU này chủ động tiếp cận sau khi NHW đã chăm sóc.</div>
-  </div>
-</div>
-
-<!-- ============ FOOTER — LOGO ONLY ============ -->
-<div class="footer">
-  <svg width="110" height="30" viewBox="0 0 220 58">
-    <rect x="2" y="6" width="46" height="46" rx="9" fill="#7BB63E"/>
-    <rect x="16" y="20" width="18" height="18" rx="4" fill="#0A2A5E" transform="rotate(45 25 29)"/>
-    <text x="60" y="38" font-family="Arial" font-weight="bold" font-size="26" fill="#B9E67A">Nova</text>
-    <text x="132" y="38" font-family="Arial" font-weight="bold" font-size="26" fill="#FFFFFF">Group</text>
-  </svg>
-</div>
-
+<script>const FLOW_DATA = {"story_title":"Một Gia đình — Một Vòng đời — Hành trình xuyên Hệ sinh thái NovaGroup","story_desc":"Gia đình Khách hàng là nhóm Khách hàng gia đình tích sản lớn. Mỗi thành viên được các thương hiệu khác nhau trong hệ sinh thái Nova tiếp cận: Khách hàng biết đến qua quảng cáo NVD Water Park Phan Thiet và clip Cường Dollar; Con của Khách hàng được NVD Mini Safari tiếp cận; Em trai thích trekking được NVD Damb'ri tiếp cận. Sau 6-8 tháng đi xem nhà mẫu và trải nghiệm nhiều dịch vụ, Khách hàng mới quyết định gặp BAM/Sales.","columns":[{"gd":"GD1","gd_full":"GIAI ĐOẠN 1","gd_name":"Nghiên cứu & Định hướng chiến lược","customer_stage":"Giai đoạn Khách hàng: Nhận biết hệ sinh thái Nova","customer_note":"Khách hàng lần đầu thấy quảng cáo NVD Water Park Phan Thiet trên Facebook và biết đến NovaGroup qua nội dung của Cường Dollar. Đây là gia đình tích sản lớn — chưa có nhu cầu mua ngay, chỉ đang ở giai đoạn làm quen thương hiệu.","timeline":"Tháng 1 — Khởi đầu hành trình","touchpoints":[{"brand":"NVD Water Park Phan Thiet","doi_tuong":"Khách hàng (chủ hộ, 38 tuổi)","kenh":"Quảng cáo Facebook Ads dạng video, nhắm mục tiêu sở thích du lịch gia đình"},{"brand":"NovaWorld Phan Thiet","doi_tuong":"Khách hàng","kenh":"Nội dung KOL Cường Dollar trên TikTok & YouTube — clip đạp xe cùng con gái"},{"brand":"NVD Mini Safari","doi_tuong":"Con của Khách hàng (7 tuổi)","kenh":"Quảng cáo YouTube Kids & TikTok nội dung hoạt hình thú cưng"},{"brand":"NVD Damb'ri","doi_tuong":"Em trai Khách hàng (thích trekking)","kenh":"Quảng cáo Instagram/Facebook nhắm mục tiêu sở thích leo núi, trekking, khám phá thiên nhiên"}],"departments":[{"phong":"P1","bp":"Tổ chức Sự kiện","chuc_danh":"Trưởng Bộ phận Tổ chức Sự kiện","sop_ma":"SOP-BP1.1-GD1-1","sop_ten":"SOP Nghiên cứu thị trường & định hướng chiến lược tổ chức sự kiện","viec":"Nghiên cứu thị trường khách hàng gia đình tích sản lớn khu vực TP.HCM."},{"phong":"P2","bp":"Quản lý KOL/KOC/Influencer","chuc_danh":"Trưởng Bộ phận Quản lý KOL/KOC/Influencer","sop_ma":"SOP-BP2.2-GD1-1","sop_ten":"SOP Nghiên cứu thị trường & định hướng chiến lược hợp tác KOL/KOC/Influencer","viec":"Định hướng chiến lược hợp tác người nổi tiếng phù hợp từng phân khúc: gia đình, trẻ em, thể thao mạo hiểm."},{"phong":"P3","bp":"Quản lý Kênh Digital","chuc_danh":"Trưởng Bộ phận Quản lý Kênh Digital","sop_ma":"SOP-BP3.1-GD1-1","sop_ten":"SOP Nghiên cứu thị trường & định hướng chiến lược kênh digital & quảng cáo số","viec":"Nghiên cứu hành vi số của từng thành viên gia đình theo độ tuổi & sở thích riêng biệt."},{"phong":"P4","bp":"Truyền thông Báo chí","chuc_danh":"Trưởng Bộ phận Truyền thông Báo chí","sop_ma":"SOP-BP4.1-GD1-1","sop_ten":"SOP Nghiên cứu thị trường & định hướng chiến lược quan hệ báo chí","viec":"Xác định kênh báo chí phù hợp để xây nhận diện thương hiệu NovaGroup đa ngành."}],"kpis":[{"phong":"P3","metric":"Chi phí trên 1000 lượt hiển thị (CPM)","target":"≤ 45.000đ / 1000 impressions"},{"phong":"P3","metric":"Tỷ lệ nhấp chuột (CTR - Click Through Rate)","target":"≥ 1,2%"},{"phong":"P2","metric":"Số người nổi tiếng/KOC được sàng lọc theo từng phân khúc gia đình","target":"≥ 12 hồ sơ/quý (3 phân khúc)"},{"phong":"P1","metric":"Số phân khúc khách hàng gia đình tích sản đã nghiên cứu","target":"≥ 3 phân khúc/quý"}],"tools":["Facebook Ads Manager","TikTok Ads Manager","Google Trends","Social Listening Tool"]},{"gd":"GD2","gd_full":"GIAI ĐOẠN 2","gd_name":"Lập kế hoạch & Ngân sách","customer_stage":"Giai đoạn Khách hàng: Quan tâm & Tương tác","customer_note":"Khách hàng xem clip Cường Dollar đạp xe cùng con gái tại NovaWorld Phan Thiet, bắt đầu theo dõi Fanpage. Con gái thích xem clip thú ở NVD Mini Safari. Em trai lưu lại bài viết về cung đường trekking Damb'ri.","timeline":"Tháng 2 — Duy trì tương tác đa kênh","touchpoints":[{"brand":"NVD Water Park Phan Thiet","doi_tuong":"Khách hàng","kenh":"Fanpage Facebook — theo dõi, thả tim, bình luận bài viết giới thiệu tiện ích"},{"brand":"NovaWorld Phan Thiet","doi_tuong":"Khách hàng","kenh":"Website dự án — xem chuyên mục Trải nghiệm & Tiện ích nghỉ dưỡng"},{"brand":"NVD Mini Safari","doi_tuong":"Con của Khách hàng","kenh":"Kênh TikTok NVD Mini Safari — lưu video, chia sẻ cho ba mẹ xem cùng"},{"brand":"NVD Damb'ri","doi_tuong":"Em trai Khách hàng","kenh":"Fanpage NVD Damb'ri — lưu bài viết cung đường trekking, bình luận hỏi lịch trình"}],"departments":[{"phong":"P1","bp":"Sản xuất Ấn phẩm MKT","chuc_danh":"Trưởng Bộ phận Sản xuất Ấn phẩm MKT","sop_ma":"SOP-BP1.2-GD2-1","sop_ten":"SOP Lập kế hoạch & dự trù ngân sách sản xuất ấn phẩm & vật phẩm MKT","viec":"Lập kế hoạch ấn phẩm giới thiệu tiện ích NVD Water Park & NovaWorld Phan Thiet."},{"phong":"P2","bp":"Quản lý & Sản xuất Nội dung","chuc_danh":"Trưởng Bộ phận Quản lý & Sản xuất Nội dung","sop_ma":"SOP-BP2.1-GD2-1","sop_ten":"SOP Lập kế hoạch & dự trù ngân sách sản xuất nội dung","viec":"Lập kế hoạch xin re-up bản quyền clip Cường Dollar, biên tập thành clip review chính thức."},{"phong":"P3","bp":"Quản lý Kênh Digital","chuc_danh":"Trưởng Bộ phận Quản lý Kênh Digital","sop_ma":"SOP-BP3.1-GD2-1","sop_ten":"SOP Lập kế hoạch & dự trù ngân sách kênh digital & quảng cáo số","viec":"Lập kế hoạch ngân sách quảng cáo bám đuổi (Retargeting) khi clip lên sóng."},{"phong":"P4","bp":"Truyền thông Cộng đồng","chuc_danh":"Trưởng Bộ phận Truyền thông Cộng đồng","sop_ma":"SOP-BP4.2-GD2-1","sop_ten":"SOP Lập kế hoạch & dự trù ngân sách quản trị cộng đồng","viec":"Lập kế hoạch quản trị cộng đồng Fanpage để duy trì tương tác đa thế hệ trong gia đình."}],"kpis":[{"phong":"P2","metric":"Xin re-up bản quyền clip Cường Dollar để biên tập thành 1 clip review","target":"1 clip được cấp phép đúng hạn"},{"phong":"P2","metric":"Số lượng clip biên tập được sản xuất từ nội dung gốc","target":"3 clip cắt ngắn (15s/30s/60s)"},{"phong":"P4","metric":"Tỷ lệ tương tác bài viết trên Fanpage (Engagement Rate)","target":"≥ 4,5%"},{"phong":"P3","metric":"Ngân sách quảng cáo bám đuổi (Retargeting) được duyệt đúng kế hoạch","target":"100% đúng hạn mức duyệt"}],"tools":["CDP (Nền tảng Dữ liệu Khách hàng)","Facebook Page Insights","Zalo OA","Content Calendar Tool"]},{"gd":"GD3","gd_full":"GIAI ĐOẠN 3","gd_name":"Chuẩn bị triển khai","customer_stage":"Giai đoạn Khách hàng: Trải nghiệm trực tiếp lần đầu","customer_note":"Cả gia đình đăng ký chuyến đi trải nghiệm cuối tuần đầu tiên tại NovaWorld Phan Thiet — Khách hàng xem NVD Water Park, con gái chơi NVD Mini Safari, em trai tách đoàn đi trekking Damb'ri.","timeline":"Tháng 3 — Chuyến trải nghiệm đầu tiên","touchpoints":[{"brand":"NovaWorld Phan Thiet","doi_tuong":"Cả gia đình","kenh":"Landing page đăng ký trải nghiệm cuối tuần — để lại số điện thoại nhận ưu đãi"},{"brand":"NVD Water Park Phan Thiet","doi_tuong":"Khách hàng","kenh":"Trải nghiệm trực tiếp tại công viên nước, chụp ảnh check-in"},{"brand":"NVD Mini Safari","doi_tuong":"Con của Khách hàng","kenh":"Trải nghiệm trực tiếp cho thú ăn, chụp ảnh cùng linh vật"},{"brand":"NVD Damb'ri","doi_tuong":"Em trai Khách hàng","kenh":"Trải nghiệm trực tiếp cung đường trekking, đăng story cá nhân"}],"departments":[{"phong":"P1","bp":"Tổ chức Sự kiện","chuc_danh":"Chuyên gia Tổ chức Sự kiện","sop_ma":"SOP-BP1.1-GD3-1","sop_ten":"SOP Chuẩn bị nguồn lực, đối tác & brief tổ chức sự kiện","viec":"Chuẩn bị đón tiếp gia đình tại NovaWorld Phan Thiet — booth đón khách, hướng dẫn viên riêng cho từng nhóm nhu cầu."},{"phong":"P2","bp":"Quản lý Sản xuất Hình ảnh & Video","chuc_danh":"Chuyên gia Quản lý Sản xuất Hình ảnh & Video","sop_ma":"SOP-BP2.3-GD3-1","sop_ten":"SOP Chuẩn bị nguồn lực, đối tác & brief sản xuất hình ảnh & video","viec":"Chuẩn bị ghi hình trải nghiệm thực tế của cả gia đình tại 3 điểm chạm khác nhau."},{"phong":"P3","bp":"Quản lý Kênh Digital","chuc_danh":"Chuyên gia Quản lý Kênh Digital","sop_ma":"SOP-BP3.1-GD3-1","sop_ten":"SOP Chuẩn bị nguồn lực, đối tác & brief kênh digital & quảng cáo số","viec":"Chuẩn bị landing page đăng ký trải nghiệm & thu thập thông tin từng thành viên gia đình."},{"phong":"P4","bp":"Truyền thông Báo chí","chuc_danh":"Chuyên gia Truyền thông Báo chí","sop_ma":"SOP-BP4.1-GD3-1","sop_ten":"SOP Chuẩn bị nguồn lực, đối tác & brief quan hệ báo chí","viec":"Chuẩn bị đưa tin trải nghiệm gia đình đa thế hệ tại NovaWorld Phan Thiet trên báo chí."}],"kpis":[{"phong":"P1","metric":"Số booth/điểm đón khách hoàn tất trước sự kiện","target":"100% hoàn tất trước D-1"},{"phong":"P3","metric":"Số lượt đăng ký trải nghiệm qua landing page","target":"≥ 200 lượt đăng ký/tháng"},{"phong":"P3","metric":"Chi phí trên mỗi lượt đăng ký (Cost per Lead)","target":"≤ 85.000đ / lượt đăng ký"},{"phong":"P2","metric":"Số giờ tư liệu hình ảnh/video thực tế được ghi nhận tại chỗ","target":"≥ 6 giờ tư liệu/chuyến"}],"tools":["SalesFast (ghi nhận Lead)","CRM","Landing Page Builder","Máy quay & Thiết bị flycam"]},{"gd":"GD4","gd_full":"GIAI ĐOẠN 4","gd_name":"Triển khai","customer_stage":"Giai đoạn Khách hàng: Trải nghiệm lặp lại nhiều lần — Nuôi dưỡng dài hạn","customer_note":"Suốt 6-8 tháng, gia đình quay lại NovaWorld Phan Thiet nhiều lần vào cuối tuần — không vội mua nhà. Khách hàng dần quen với đội ngũ, xem thêm nhà mẫu Dự án GMA vài lần nhưng vẫn đang cân nhắc. Đây là gia đình tích sản lớn, quyết định chậm và kỹ.","timeline":"Tháng 4 đến Tháng 9-10 — Giai đoạn nuôi dưỡng dài hạn (6-8 tháng)","touchpoints":[{"brand":"NovaWorld Phan Thiet","doi_tuong":"Cả gia đình","kenh":"Zalo OA & ZNS — nhận thông báo sự kiện cuối tuần định kỳ, ưu đãi thành viên"},{"brand":"Website Dự án GMA","doi_tuong":"Khách hàng","kenh":"Website dự án — xem tiến độ, pháp lý, mặt bằng căn hộ nhiều lần"},{"brand":"Minera Hồ Tràm","doi_tuong":"Khách hàng","kenh":"Google Ads dạng Hotel Booking Ads — xem thêm lựa chọn nghỉ dưỡng khác trong hệ sinh thái"},{"brand":"Dragon Palace","doi_tuong":"Cả gia đình","kenh":"Website nhà hàng Dragon Palace — đặt bàn ăn khi cả nhà xuống Phan Thiet"},{"brand":"YoYo Beer Garden","doi_tuong":"Khách hàng","kenh":"TikTok YoYo Beer Garden — xem nội dung không gian giải trí buổi tối"}],"departments":[{"phong":"P3","bp":"Quản lý Kênh Digital","chuc_danh":"Chuyên gia Quản lý Kênh Digital","sop_ma":"SOP-BP3.1-GD4-1","sop_ten":"SOP Vận hành & triển khai kênh digital & quảng cáo số","viec":"Vận hành quảng cáo bám đuổi đa kênh xuyên suốt 6-8 tháng theo đúng lịch quay lại của gia đình."},{"phong":"P3","bp":"Quản lý Tiếp thị qua Điện thoại","chuc_danh":"Chuyên gia Quản lý Tiếp thị qua Điện thoại","sop_ma":"SOP-BP3.2-GD4-1","sop_ten":"SOP Vận hành & triển khai tiếp thị qua điện thoại (telemarketing)","viec":"Gọi chăm sóc định kỳ, mời tham gia sự kiện cuối tuần tiếp theo — không thúc ép mua nhà."},{"phong":"P1","bp":"Tổ chức Sự kiện","chuc_danh":"Chuyên gia Tổ chức Sự kiện","sop_ma":"SOP-BP1.1-GD4-1","sop_ten":"SOP Vận hành & triển khai tổ chức sự kiện","viec":"Vận hành chuỗi sự kiện cuối tuần định kỳ để gia đình có lý do quay lại nhiều lần."},{"phong":"P4","bp":"Truyền thông Báo chí","chuc_danh":"Chuyên gia Truyền thông Báo chí","sop_ma":"SOP-BP4.1-GD4-1","sop_ten":"SOP Vận hành & triển khai quan hệ báo chí","viec":"Duy trì đăng tải tin tức tiến độ Dự án GMA định kỳ để khách hàng an tâm theo dõi."}],"kpis":[{"phong":"P3","metric":"Khi air clip Cường Dollar: Số lượt xem tự nhiên (Organic View)","target":"≥ 300.000 view organic"},{"phong":"P3","metric":"Khi air clip Cường Dollar: Số lượt xem từ quảng cáo trả phí (Paid View)","target":"≥ 500.000 view paid ads"},{"phong":"P3","metric":"Tỷ lệ chuyển đổi (Conversion Rate) từ lượt xem sang đăng ký tư vấn","target":"≥ 2,5% Conversion Rate"},{"phong":"P3","metric":"Số lần quay lại website Dự án GMA trong 6-8 tháng (Return Visit Rate)","target":"≥ 5 lần truy cập/khách hàng"},{"phong":"P3","metric":"Tần suất tiếp cận quảng cáo mỗi tuần (Frequency)","target":"3-4 lần/tuần, tránh gây khó chịu"}],"tools":["Antsomi CDP (hợp nhất hồ sơ khách hàng)","AntBuddy (chăm sóc đa kênh)","Facebook Ads Manager","Google Ads Manager","Zalo ZNS"]},{"gd":"GD5","gd_full":"GIAI ĐOẠN 5","gd_name":"Đo lường, đánh giá & tối ưu hóa","customer_stage":"Giai đoạn Khách hàng: Cân nhắc sâu → Quyết định gặp Sales","customer_note":"Sau 6-8 tháng trải nghiệm nhiều lần, hệ thống phát hiện tín hiệu sẵn sàng (Khách hàng xem website Dự án GMA quá 5 lần, đặt bàn Dragon Palace 3 lần). Lead được chuyển sang SalesFast của Ban Kinh doanh NVLG để BAM tiếp cận trực tiếp.","timeline":"Tháng 10-11 — Điểm chuyển đổi quan trọng","touchpoints":[{"brand":"Website Dự án GMA","doi_tuong":"Khách hàng","kenh":"Hệ thống ghi nhận điểm hành vi (Lead Scoring) đạt ngưỡng sẵn sàng mua"},{"brand":"SalesFast — Ban Kinh doanh NVLG","doi_tuong":"Khách hàng","kenh":"Lead được tự động chuyển sang SalesFast, phân bổ cho BAM phụ trách khu vực"}],"departments":[{"phong":"P3","bp":"Quản lý Kênh Digital","chuc_danh":"Phó Bộ phận Quản lý Kênh Digital","sop_ma":"SOP-BP3.1-GD5-1","sop_ten":"SOP Đo lường & báo cáo hiệu quả kênh digital & quảng cáo số","viec":"Đo lường hành vi 6-8 tháng để xác định đúng thời điểm Khách hàng sẵn sàng gặp Sales."},{"phong":"P3","bp":"Quản lý Tiếp thị qua Điện thoại","chuc_danh":"Phó Bộ phận Quản lý Tiếp thị qua Điện thoại","sop_ma":"SOP-BP3.2-GD5-1","sop_ten":"SOP Đo lường & báo cáo hiệu quả tiếp thị qua điện thoại (telemarketing)","viec":"Xác nhận lại nhu cầu qua điện thoại trước khi chuyển Lead sang SalesFast Ban Kinh doanh NVLG."},{"phong":"P2","bp":"Quản lý & Sản xuất Nội dung","chuc_danh":"Phó Bộ phận Quản lý & Sản xuất Nội dung","sop_ma":"SOP-BP2.1-GD5-1","sop_ten":"SOP Đo lường & báo cáo hiệu quả sản xuất nội dung","viec":"Đánh giá hiệu quả nội dung nuôi dưỡng suốt 6-8 tháng để tối ưu cho các gia đình khác."},{"phong":"P1","bp":"Tổ chức Sự kiện","chuc_danh":"Phó Bộ phận Tổ chức Sự kiện","sop_ma":"SOP-BP1.1-GD5-1","sop_ten":"SOP Đo lường & báo cáo hiệu quả tổ chức sự kiện","viec":"Đo lường hiệu quả chuỗi sự kiện cuối tuần trong việc giữ chân gia đình suốt hành trình dài."}],"kpis":[{"phong":"P3","metric":"Điểm hành vi khách hàng (Lead Score) đạt ngưỡng chuyển đổi","target":"≥ 80/100 điểm"},{"phong":"P3","metric":"Tỷ lệ Lead được chuyển đúng hạn sang SalesFast Ban Kinh doanh NVLG","target":"100% trong 24 giờ kể từ khi đạt ngưỡng"},{"phong":"P3","metric":"Thời gian trung bình từ Lead đủ điều kiện đến khi BAM tiếp nhận","target":"≤ 15 phút"},{"phong":"P1","metric":"Tỷ lệ gia đình tham gia từ 3 sự kiện cuối tuần trở lên","target":"≥ 60% khách hàng mục tiêu"}],"tools":["Antsomi CDP (Lead Scoring tự động)","SalesFast (Ban Kinh doanh NVLG)","AntBuddy Contact Center","Power BI Dashboard"]},{"gd":"GD6","gd_full":"GIAI ĐOẠN 6","gd_name":"Tổng kết, lưu trữ tri thức & cải tiến liên tục","customer_stage":"Giai đoạn Khách hàng: Gặp BAM/Sales — Tiếp tục hành trình quyết định","customer_note":"BAM của Ban Kinh doanh NVLG tiếp nhận hồ sơ đầy đủ hành trình 6-8 tháng của gia đình Khách hàng, tư vấn trực tiếp dựa trên toàn bộ dữ liệu quan tâm đã ghi nhận — không cần hỏi lại từ đầu.","timeline":"Tháng 11-12 — Bàn giao cho Kinh doanh","touchpoints":[{"brand":"Ban Kinh doanh NVLG","doi_tuong":"Khách hàng","kenh":"BAM gặp trực tiếp tại nhà mẫu Dự án GMA, tư vấn dựa trên hồ sơ 360° từ Marketing"}],"departments":[{"phong":"P4","bp":"Truyền thông Cộng đồng","chuc_danh":"Phó Bộ phận Truyền thông Cộng đồng","sop_ma":"SOP-BP4.2-GD6-1","sop_ten":"SOP Tổng kết, quyết toán & lưu trữ tri thức quản trị cộng đồng","viec":"Tổng kết toàn bộ hành trình 6-8 tháng của gia đình để rút kinh nghiệm nuôi dưỡng."},{"phong":"P2","bp":"Quản lý KOL/KOC/Influencer","chuc_danh":"Phó Bộ phận Quản lý KOL/KOC/Influencer","sop_ma":"SOP-BP2.2-GD6-1","sop_ten":"SOP Tổng kết, quyết toán & lưu trữ tri thức hợp tác KOL/KOC/Influencer","viec":"Lưu trữ tri thức: đánh giá hiệu quả nội dung Cường Dollar trong việc nuôi dưỡng khách hàng dài hạn."},{"phong":"Ban","bp":"Kế hoạch Marketing (Ban)","chuc_danh":"Phó Giám đốc Ban - Tuân thủ","sop_ma":"SOP-BP0-GD6-1","sop_ten":"SOP Tổng kết & đúc kết bài học kinh nghiệm toàn Ban Marketing","viec":"Đúc kết bài học toàn vòng đời khách hàng gia đình tích sản lớn để chuẩn hóa quy trình cho chu kỳ tiếp theo."},{"phong":"P3","bp":"Quản lý Kênh Digital","chuc_danh":"Phó Bộ phận Quản lý Kênh Digital","sop_ma":"SOP-BP3.1-GD6-1","sop_ten":"SOP Tổng kết, quyết toán & lưu trữ tri thức kênh digital & quảng cáo số","viec":"Lưu trữ toàn bộ dữ liệu hành trình 6-8 tháng vào hệ thống dữ liệu để phục vụ chu kỳ tiếp theo."}],"kpis":[{"phong":"P4","metric":"Thời gian hoàn tất báo cáo tổng kết hành trình khách hàng","target":"≤ 5 ngày làm việc sau bàn giao"},{"phong":"P2","metric":"Chỉ số hiệu quả đầu tư nội dung KOL trên vòng đời dài hạn (ROI theo Lead chuyển đổi)","target":"≥ 4 lần chi phí bỏ ra"},{"phong":"P3","metric":"Tỷ lệ hồ sơ khách hàng được lưu trữ đầy đủ vào hệ thống dữ liệu","target":"100% hồ sơ đầy đủ lịch sử 6-8 tháng"}],"tools":["Antsomi CDP (lưu trữ hồ sơ 360°)","SalesFast (bàn giao hồ sơ cho BAM)","Power BI Dashboard","Knowledge Base nội bộ"]}],"phong_full_names":{"P1":"Tổ chức Sự kiện & Sản xuất Ấn vật phẩm Marketing","P2":"Hệ thống Quản lý & Sản xuất Nội dung","P3":"Hệ thống Quản lý Kênh Digital","P4":"Hệ thống Quản lý Kênh Truyền thông Báo chí & Cộng đồng"},"data_source_note":"Toàn bộ số liệu Reach, CPM, CTR, Organic View, Paid View, Conversion Rate, Lead Score được đồng bộ tự động theo thời gian thực (Real-time API) từ các nền tảng: Facebook Ads Manager, Google Ads Manager, TikTok Ads Manager, Antsomi CDP (hợp nhất hồ sơ khách hàng đa điểm chạm), AntBuddy (Contact Center & chăm sóc đa kênh), SalesFast (CRM Ban Kinh doanh NVLG) và Master Data Platform nội bộ NovaGroup."};</script>
 <script>
-function setActiveNav(el){
-  document.querySelectorAll('.masternav a').forEach(a=>a.classList.remove('active'));
-  el.classList.add('active');
+const PHONG_COLOR = {
+  'P1': {c:'#1D4ED8', l:'#E8F0FE'},
+  'P2': {c:'#065F46', l:'#E8F5E9'},
+  'P3': {c:'#7C3AED', l:'#F3E8FF'},
+  'P4': {c:'#9D174D', l:'#FCE7F3'},
+  'Ban':{c:'#B45309', l:'#FEF3C7'},
+};
+
+function renderStoryHeader(){
+  document.getElementById('story-title').textContent = FLOW_DATA.story_title;
+  document.getElementById('story-desc').textContent = FLOW_DATA.story_desc;
+  document.getElementById('data-source-note').innerHTML = `<b>Nguồn dữ liệu &amp; đồng bộ:</b> ${FLOW_DATA.data_source_note}`;
 }
+
+function renderLegend(){
+  const names = FLOW_DATA.phong_full_names;
+  const order = ['P1','P2','P3','P4'];
+  const labels = {P1:'Phòng 1', P2:'Phòng 2', P3:'Phòng 3', P4:'Phòng 4'};
+  const html = order.map(p=>{
+    const c = PHONG_COLOR[p].c;
+    return `<div class="legend-item"><span class="legend-sw" style="background:${c};"></span>${labels[p]} — ${names[p]}</div>`;
+  }).join('') + `<div class="legend-item"><span class="legend-sw" style="background:#B45309;"></span>Ban Marketing (cấp Tập đoàn)</div>`;
+  document.getElementById('legend-row').innerHTML = html;
+}
+
+function renderFlowchart(){
+  const fc = document.getElementById('flowchart');
+  fc.innerHTML = FLOW_DATA.columns.map(col=>{
+
+    const tpItems = col.touchpoints.map(t=>`
+      <div class="fc-tp-item">
+        <div class="tp-brand">${t.brand}</div>
+        <span class="tp-doituong">${t.doi_tuong}</span>
+        <div class="tp-kenh">${t.kenh}</div>
+      </div>
+    `).join('');
+
+    const deptCards = col.departments.map(d=>{
+      const pc = PHONG_COLOR[d.phong] || PHONG_COLOR['P1'];
+      const label = d.phong==='Ban' ? 'BAN MKT' : 'PHÒNG '+d.phong.replace('P','');
+      return `
+        <div class="fc-dept-card" style="background:${pc.l}; border-left-color:${pc.c};">
+          <div class="dept-tags"><span class="dtag" style="background:${pc.c};">${label}</span></div>
+          <div class="dept-cd" style="color:${pc.c};">${d.chuc_danh}</div>
+          <div class="dept-viec">${d.viec}</div>
+          <span class="dept-sop" style="color:${pc.c};">${d.sop_ma}</span>
+        </div>
+      `;
+    }).join('');
+
+    const kpiItems = col.kpis.map(k=>{
+      const pc = PHONG_COLOR[k.phong] || PHONG_COLOR['P1'];
+      const label = k.phong==='Ban' ? 'BAN MKT' : 'PHÒNG '+k.phong.replace('P','');
+      return `
+        <div class="fc-kpi-item">
+          <span class="kpi-phong" style="background:${pc.c};">${label}</span>
+          <div class="kpi-metric">${k.metric}</div>
+          <div class="kpi-target">Chỉ tiêu: ${k.target}</div>
+        </div>
+      `;
+    }).join('');
+
+    const toolItems = col.tools.map(t=>`<div class="fc-tool-item">${t}</div>`).join('');
+
+    return `
+      <div class="fc-col">
+        <div class="fc-gd-header">
+          <div class="gd-code">${col.gd_full}</div>
+          <div class="gd-name">${col.gd_name}</div>
+          <div class="gd-timeline">${col.timeline}</div>
+        </div>
+        <div class="fc-cj-row"><div class="cj-label">${col.customer_stage}</div></div>
+        <div class="fc-cj-note">${col.customer_note}</div>
+        <div class="fc-tp-label">📍 ĐIỂM CHẠM / KÊNH TIẾP CẬN</div>
+        <div class="fc-tp-list">${tpItems}</div>
+        <div class="fc-top-label">▲ AI LÀM GÌ — SOP NÀO</div>
+        <div class="fc-dept-list">${deptCards}</div>
+        <div class="fc-bottom-label">▼ KPI DASHBOARD — CHỈ SỐ MARKETING</div>
+        <div class="fc-kpi-list">${kpiItems}</div>
+        <div class="fc-tool-label">🛠 NỀN TẢNG / CÔNG CỤ VẬN HÀNH</div>
+        <div class="fc-tool-list">${toolItems}</div>
+      </div>
+    `;
+  }).join('');
+}
+
+renderStoryHeader();
+renderLegend();
+renderFlowchart();
 </script>
 
 </body>
